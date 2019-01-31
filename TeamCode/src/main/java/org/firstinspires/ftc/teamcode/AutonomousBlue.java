@@ -68,11 +68,28 @@ public class AutonomousBlue extends LinearOpMode {
 		waitForStart();
 
 		int start = motorDeposit.getCurrentPosition();
-		while (motorDeposit.getCurrentPosition() <= x + 90) {
+		while (motorDeposit.getCurrentPosition() <= start + 90) {
 			motorDeposit.setPower(0.1);
 		}
-		motorExtender.setPower(0);
+		motorDeposit.setPower(0);
 
 
+	}
+
+	public void motorDepositMove(int deg) {
+		int rot = deg / 360;
+		int extra = deg % 360;
+		for (int i = 0; i < rot; i++) {
+			int start = motorDeposit.getCurrentPosition();
+			while (motorDeposit.getCurrentPosition() - start <= 0.2 && motorDeposit.getCurrentPosition() - start >= -0.2) {
+				motorDeposit.setPower(0.1);
+			}
+			motorDeposit.setPower(0);
+		}
+		int start = motorDeposit.getCurrentPosition();
+		while (motorDeposit.getCurrentPosition() - start - extra <= 0.2 && motorDeposit.getCurrentPosition() - start - extra >= -0.2) {
+			motorDeposit.setPower(0.1);
+		}
+		motorDeposit.setPower(0);
 	}
 }
