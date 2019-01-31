@@ -66,13 +66,12 @@ public class AutonomousBlue extends LinearOpMode {
 		telemetry.update();
 		// Wait for the game to start (driver presses PLAY)
 		waitForStart();
-		
-		motorDepositMove()
+		clawMoveForward(450);
 
 
 	}
 
-	public void clawMove(int deg) {
+	public void clawMoveForward(int deg) {
 		int rot = deg / 360;
 		int extra = deg % 360;
 		for (int i = 0; i < rot; i++) {
@@ -81,7 +80,7 @@ public class AutonomousBlue extends LinearOpMode {
 			boolean moved = false;
 			while (moved && !(motorExtenderRight.getCurrentPosition() - startR <= 0.2 && motorExtenderRight.getCurrentPosition() - startR >= -0.2 && motorExtenderLeft.getCurrentPosition() - startL <= 0.2 && motorExtenderLeft.getCurrentPosition() - startL >= -0.2)) {
 				motorExtenderRight.setPower(0.1);
-				motorExtenderLeft.setPower(0.1);
+				motorExtenderLeft.setPower(-0.1);
 				if (motorExtenderRight.getCurrentPosition() - startR - motorExtenderLeft.getCurrentPosition() + startL > 0.2) {
 					motorExtenderRight.setPower(0);
 				} else if (motorExtenderRight.getCurrentPosition() - startR - motorExtenderLeft.getCurrentPosition() + startL < -0.2) {
@@ -95,7 +94,7 @@ public class AutonomousBlue extends LinearOpMode {
 		int start = motorDeposit.getCurrentPosition();
 		while (!(motorExtenderRight.getCurrentPosition() - startR - extra <= 0.2 && motorExtenderRight.getCurrentPosition() - startR - extra >= -0.2 && motorExtenderLeft.getCurrentPosition() - startL - extra <= 0.2 && motorExtenderLeft.getCurrentPosition() - startL - extra>= -0.2)) {
 			motorExtenderRight.setPower(0.1);
-			motorExtenderLeft.setPower(0.1);
+			motorExtenderLeft.setPower(-0.1);
 			if (motorExtenderRight.getCurrentPosition() - startR - motorExtenderLeft.getCurrentPosition() + startL > 0.2) {
 				motorExtenderRight.setPower(0);
 			} else if (motorExtenderRight.getCurrentPosition() - startR - motorExtenderLeft.getCurrentPosition() + startL < -0.2) {
