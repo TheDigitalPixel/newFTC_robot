@@ -66,6 +66,7 @@ public class AutonomousBlue extends LinearOpMode {
 		telemetry.update();
 		// Wait for the game to start (driver presses PLAY)
 		waitForStart();
+
 		int start = motorDeposit.getCurrentPosition();
 		while (motorDeposit.getCurrentPosition() <= x + 90) {
 			motorDeposit.setPower(0.1);
