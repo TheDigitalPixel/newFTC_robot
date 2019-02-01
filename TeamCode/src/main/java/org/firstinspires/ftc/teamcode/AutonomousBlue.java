@@ -11,14 +11,17 @@ import java.util.*;
 @Autonomous
 public class AutonomousBlue extends LinearOpMode {
 
+
 	private DcMotor motorWheelFL;
 	private DcMotor motorWheelFR;
 	private DcMotor motorWheelBL;
 	private DcMotor motorWheelBR;
+	private CRServo motorCollector;
 	private DcMotor motorExtenderRight;
 	private DcMotor motorExtenderLeft;
 	private DcMotor motorDeposit;
 	private DcMotor motorLift;
+	private CRServo motorRotator;
 
 	//private ColorSensor sensor;
 	//private Servo arm;
@@ -37,40 +40,48 @@ public class AutonomousBlue extends LinearOpMode {
 		motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
 		motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
 		motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
+		motorCollector = hardwareMap.get(CRServo.class, "motorCollector");
 		motorExtenderRight = hardwareMap.get(DcMotor.class, "motorExtenderRight");
 		motorExtenderLeft = hardwareMap.get(DcMotor.class, "motorExtenderLeft");
 		motorDeposit = hardwareMap.get(DcMotor.class, "motorDeposit");
 		motorLift = hardwareMap.get(DcMotor.class, "motorLift");
-		// sensor = hardwareMap.colorSensor.get("color");
-		// arm = hardwareMap.get(Servo.class, "arm");
-
-		motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorWheelBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorExtenderLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorExtenderRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorDeposit.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		motorRotator = hardwareMap.get(CRServo.class, "motorRotator");
 
 		motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		motorWheelBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorWheelBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		motorWheelBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-		motorExtenderLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        motorCollector.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorCollector.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		motorExtenderRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorExtenderRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		motorExtenderLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorExtenderLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		motorDeposit.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorDeposit.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		telemetry.addData("Status", "Initialized");
 		telemetry.update();
 		// Wait for the game to start (driver presses PLAY)
 		waitForStart();
-		clawMoveForward(200);
+		//clawMoveForward(200);
+		lowerBot(100,1);
 
 
 	}
 
+	public void lowerBot(int rot, int pwr) {
+		while(motorLift.getCurrentPosition() < rot){
+			motorLift.setPower(pwr);
+		}
+			motorLift.setPower(0);
+	}
 	public void claw2(int deg) {
 		int startR = motorExtenderRight.getCurrentPosition();
 		while ((motorExtenderRight.getCurrentPosition() - startR) % 360 < deg) {
