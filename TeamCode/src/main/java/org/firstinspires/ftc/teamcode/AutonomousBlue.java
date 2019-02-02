@@ -74,18 +74,38 @@ public class AutonomousBlue extends LinearOpMode {
 		//clawMoveForward(200);
 		while(opModeIsActive()){
             motorDeposit.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            lowerBot(359,1);
+            lowerBot(1);
         }
 
 
 	}
 
-	public void lowerBot(int rot, int pwr) {
-		while(motorDeposit.getCurrentPosition() < rot){
-			motorDeposit.setPower(pwr);
-		}
-			motorDeposit.setPower(0);
+	public void lowerBot(int rot) {
+//       while(motorDeposit.getCurrentPosition() < rot) {
+////           motorDeposit.setPower(1);
+////           telemetry.addData("motorDeposit", motorDeposit.getCurrentPosition());
+////       }
+
+        boolean run = true;
+
+        while (run) {
+            if(motorDeposit.getCurrentPosition() >= rot){
+                motorDeposit.setPower(0);
+                run = false;
+            }
+            else motorDeposit.setPower(1);
+        }
 	}
+	public void ExtraLower(int rot, int enc){
+        double diff = enc-rot;
+        if(diff < 0){
+            diff *= -1;
+        }
+        while(diff > 0){
+            diff = motorDeposit.getCurrentPosition()-rot;
+            motorDeposit.setPower(diff);
+        }
+    }
 	public void claw2(int deg) {
 		int startR = motorExtenderRight.getCurrentPosition();
 		while ((motorExtenderRight.getCurrentPosition() - startR) % 360 < deg) {
