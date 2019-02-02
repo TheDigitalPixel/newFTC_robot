@@ -113,18 +113,18 @@ public class TeleOP extends LinearOpMode{
             motorDeposit.setPower(armExtend);
 
             motorRotator.setPower(right_trigger/2-left_trigger/2);
-            if(liftUp){
-                motorLift.setPower(0.5);
-            }
-            else{
-                motorLift.setPower(0);
-            }
-            if(liftDown){
-                motorLift.setPower(-0.5);
-            }
-            else{
-                motorLift.setPower(0);
-            }
+                if(liftUp){
+                    motorLift.setPower(1);
+                }
+                else{
+                    motorLift.setPower(0);
+                }
+                if(liftDown){
+                    motorLift.setPower(-1);
+                }
+                else{
+                    motorLift.setPower(0);
+                }
             if(collector){
                 motorCollector.setPower(-0.8);
             }
@@ -139,6 +139,10 @@ public class TeleOP extends LinearOpMode{
             }
             telemetry.addData("Left_trigger", this.gamepad2.left_trigger);
             telemetry.addData("Right_trigger", this.gamepad2.right_trigger);
+            telemetry.addData("motorLift", motorLift.getCurrentPosition());
+            telemetry.addData("motorExtenderLeft", motorExtenderLeft.getCurrentPosition());
+            telemetry.addData("motorExtenderRight", motorExtenderRight.getCurrentPosition());
+            telemetry.addData("motorDeposit", motorDeposit.getCurrentPosition());
             telemetry.update();
         }
     }
