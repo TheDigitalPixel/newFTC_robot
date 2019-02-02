@@ -73,6 +73,7 @@ public class AutonomousBlue extends LinearOpMode {
 		waitForStart();
 		//clawMoveForward(200);
 		while(opModeIsActive()){
+            motorDeposit.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             lowerBot(359,1);
         }
 
