@@ -96,8 +96,8 @@ public class TeleOP extends LinearOpMode{
             float right_trigger = this.gamepad2.right_trigger;
             float extend = this.gamepad2.left_stick_y;
             float armExtend = this.gamepad2.right_stick_y;
-            boolean liftUp = this.gamepad2.a;
-            boolean liftDown = this.gamepad2.y;
+            boolean liftDown = this.gamepad2.a;
+            boolean liftUp = this.gamepad2.y;
             boolean collector = this.gamepad2.right_bumper;
             boolean reverse = this.gamepad2.left_bumper;
 
@@ -114,13 +114,13 @@ public class TeleOP extends LinearOpMode{
 
             motorRotator.setPower(right_trigger/2-left_trigger/2);
                 if(liftUp){
-                    motorLift.setPower(1);
+                    motorLift.setPower(-1);
                 }
                 else{
                     motorLift.setPower(0);
                 }
                 if(liftDown){
-                    motorLift.setPower(-1);
+                    motorLift.setPower(1);
                 }
                 else{
                     motorLift.setPower(0);
