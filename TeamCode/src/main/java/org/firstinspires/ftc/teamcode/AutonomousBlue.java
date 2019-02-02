@@ -72,7 +72,7 @@ public class AutonomousBlue extends LinearOpMode {
 		// Wait for the game to start (driver presses PLAY)
 		waitForStart();
 		//clawMoveForward(200);
-		lowerBot(100,1);
+		lowerBot(720,-1);
 
 
 	}
