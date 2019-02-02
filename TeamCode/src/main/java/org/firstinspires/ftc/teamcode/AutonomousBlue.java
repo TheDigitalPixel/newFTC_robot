@@ -73,7 +73,7 @@ public class AutonomousBlue extends LinearOpMode {
 		waitForStart();
 		//clawMoveForward(200);
 		while(opModeIsActive()){
-            lowerBot(720,-1);
+            lowerBot(359,1);
         }
 
 
