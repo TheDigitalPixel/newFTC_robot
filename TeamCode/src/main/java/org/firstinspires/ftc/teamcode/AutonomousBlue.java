@@ -80,10 +80,10 @@ public class AutonomousBlue extends LinearOpMode {
 	}
 
 	public void lowerBot(int rot, int pwr) {
-		while(motorLift.getCurrentPosition() < rot){
-			motorLift.setPower(pwr);
+		while(motorDeposit.getCurrentPosition() < rot){
+			motorDeposit.setPower(pwr);
 		}
-			motorLift.setPower(0);
+			motorDeposit.setPower(0);
 	}
 	public void claw2(int deg) {
 		int startR = motorExtenderRight.getCurrentPosition();

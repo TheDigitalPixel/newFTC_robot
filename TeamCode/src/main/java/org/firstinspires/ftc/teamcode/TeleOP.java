@@ -114,8 +114,7 @@ public class TeleOP extends LinearOpMode{
 
             motorRotator.setPower(right_trigger/2-left_trigger/2);
             motorLift.setPower(liftUp);
-            motorLift.setPower(-liftDown 0.
-            );
+            motorLift.setPower(-liftDown);
             if(collector){
                 motorCollector.setPower(-0.8);
             }
