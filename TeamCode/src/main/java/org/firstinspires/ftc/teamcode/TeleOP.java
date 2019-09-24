@@ -92,41 +92,41 @@ public class TeleOP extends LinearOpMode{
             telemetry.addData("BR Motor Power", motorWheelBR.getPower());
             telemetry.update();
 
-            float left_trigger = this.gamepad2.left_trigger;
-            float right_trigger = this.gamepad2.right_trigger;
-            float extend = this.gamepad2.left_stick_y;
-            float armExtend = this.gamepad2.right_stick_y;
-            float liftDown = this.gamepad1.right_trigger;
-            float liftUp = this.gamepad1.left_trigger;
-            boolean collector = this.gamepad2.right_bumper;
-            boolean reverse = this.gamepad2.left_bumper;
+//            float left_trigger = this.gamepad2.left_trigger;
+//            float right_trigger = this.gamepad2.right_trigger;
+//            float extend = this.gamepad2.left_stick_y;
+//            float armExtend = this.gamepad2.right_stick_y;
+//            float liftDown = this.gamepad1.right_trigger;
+//            float liftUp = this.gamepad1.left_trigger;
+//            boolean collector = this.gamepad2.right_bumper;
+//            boolean reverse = this.gamepad2.left_bumper;
 
 
-            motorExtenderRight.setPower(-extend);
-            motorExtenderLeft.setPower(extend);
-            if(motorExtenderRight.getCurrentPosition() > motorExtenderLeft.getCurrentPosition()){
-                motorExtenderRight.setPower((-extend)* (motorExtenderLeft.getCurrentPosition()/motorExtenderRight.getCurrentPosition()));
-            }
-            else if(motorExtenderRight.getCurrentPosition() < motorExtenderLeft.getCurrentPosition()){
-                motorExtenderLeft.setPower((extend)* (motorExtenderRight.getCurrentPosition()/motorExtenderLeft.getCurrentPosition()));
-            }
-            motorDeposit.setPower(armExtend);
-
-            motorRotator.setPower(right_trigger/2-left_trigger/2);
-            motorLift.setPower(liftUp);
-            motorLift.setPower(-liftDown);
-            if(collector){
-                motorCollector.setPower(-0.8);
-            }
-            else{
-                motorCollector.setPower(0);
-            }
-            if(reverse){
-                motorCollector.setPower(0.8);
-            }
-            else{
-                motorCollector.setPower(0);
-            }
+//            motorExtenderRight.setPower(-extend);
+//            motorExtenderLeft.setPower(extend);
+//            if(motorExtenderRight.getCurrentPosition() > motorExtenderLeft.getCurrentPosition()){
+//                motorExtenderRight.setPower((-extend)* (motorExtenderLeft.getCurrentPosition()/motorExtenderRight.getCurrentPosition()));
+//            }
+//            else if(motorExtenderRight.getCurrentPosition() < motorExtenderLeft.getCurrentPosition()){
+//                motorExtenderLeft.setPower((extend)* (motorExtenderRight.getCurrentPosition()/motorExtenderLeft.getCurrentPosition()));
+//            }
+//            motorDeposit.setPower(armExtend);
+//
+//            motorRotator.setPower(right_trigger/2-left_trigger/2);
+//            motorLift.setPower(liftUp);
+//            motorLift.setPower(-liftDown);
+//            if(collector){
+//                motorCollector.setPower(-0.8);
+//            }
+//            else{
+//                motorCollector.setPower(0);
+//            }
+//            if(reverse){
+//                motorCollector.setPower(0.8);
+//            }
+//            else{
+//                motorCollector.setPower(0);
+//            }
             telemetry.addData("Left_trigger", this.gamepad2.left_trigger);
             telemetry.addData("Right_trigger", this.gamepad2.right_trigger);
             telemetry.addData("motorLift", motorLift.getCurrentPosition());
