@@ -19,7 +19,7 @@ public class TeleOP extends LinearOpMode{
 //    private DcMotor motorExtenderLeft;
 //    private DcMotor motorDeposit;
 //    private DcMotor motorLift;
-//    private CRServo motorRotator;
+//    private CRServo motorRotator;.
 
     @Override
     public void runOpMode() throws InterruptedException {
