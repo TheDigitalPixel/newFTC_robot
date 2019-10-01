@@ -15,7 +15,7 @@ public class TeleOP extends LinearOpMode{
     private DcMotor motorWheelBL;
     private DcMotor motorWheelBR;
 
-    public TeleOp {
+    public TeleOp{
 
         motorWheelFL = hardwareMap.get(DcMotor.class, "motorWheelFL");
         motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
@@ -53,7 +53,7 @@ public class TeleOP extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-        public TeleOp dicko;
+        TeleOp dicko = new TeleOp();
         dicko.drive();
 
 
