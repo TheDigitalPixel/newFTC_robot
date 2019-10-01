@@ -14,12 +14,12 @@ public class TeleOP extends LinearOpMode{
     private DcMotor motorWheelFR;
     private DcMotor motorWheelBL;
     private DcMotor motorWheelBR;
-    private CRServo motorCollector;
-    private DcMotor motorExtenderRight;
-    private DcMotor motorExtenderLeft;
-    private DcMotor motorDeposit;
-    private DcMotor motorLift;
-    private CRServo motorRotator;
+//    private CRServo motorCollector;
+//    private DcMotor motorExtenderRight;
+//    private DcMotor motorExtenderLeft;
+//    private DcMotor motorDeposit;
+//    private DcMotor motorLift;
+//    private CRServo motorRotator;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -27,13 +27,13 @@ public class TeleOP extends LinearOpMode{
         motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
         motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
         motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
-        motorCollector = hardwareMap.get(CRServo.class, "motorCollector");
-        motorExtenderRight = hardwareMap.get(DcMotor.class, "motorExtenderRight");
-        motorExtenderLeft = hardwareMap.get(DcMotor.class, "motorExtenderLeft");
-        motorDeposit = hardwareMap.get(DcMotor.class, "motorDeposit");
-        motorLift = hardwareMap.get(DcMotor.class, "motorLift");
-        motorRotator = hardwareMap.get(CRServo.class, "motorRotator");
-	
+//        motorCollector = hardwareMap.get(CRServo.class, "motorCollector");
+//        motorExtenderRight = hardwareMap.get(DcMotor.class, "motorExtenderRight");
+//        motorExtenderLeft = hardwareMap.get(DcMotor.class, "motorExtenderLeft");
+//        motorDeposit = hardwareMap.get(DcMotor.class, "motorDeposit");
+//        motorLift = hardwareMap.get(DcMotor.class, "motorLift");
+//        motorRotator = hardwareMap.get(CRServo.class, "motorRotator");
+//
 	    motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -44,16 +44,16 @@ public class TeleOP extends LinearOpMode{
         motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        motorCollector.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        motorCollector.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorExtenderRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorExtenderRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorExtenderLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorExtenderLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorDeposit.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorDeposit.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        motorExtenderRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorExtenderRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        motorExtenderLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorExtenderLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        motorDeposit.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorDeposit.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        
+
 	telemetry.addData("Status", "Initialized");
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
@@ -101,38 +101,38 @@ public class TeleOP extends LinearOpMode{
             boolean collector = this.gamepad2.right_bumper;
             boolean reverse = this.gamepad2.left_bumper;
 
-
-            motorExtenderRight.setPower(-extend);
-            motorExtenderLeft.setPower(extend);
-            if(motorExtenderRight.getCurrentPosition() > motorExtenderLeft.getCurrentPosition()){
-                motorExtenderRight.setPower((-extend)* (motorExtenderLeft.getCurrentPosition()/motorExtenderRight.getCurrentPosition()));
-            }
-            else if(motorExtenderRight.getCurrentPosition() < motorExtenderLeft.getCurrentPosition()){
-                motorExtenderLeft.setPower((extend)* (motorExtenderRight.getCurrentPosition()/motorExtenderLeft.getCurrentPosition()));
-            }
-            motorDeposit.setPower(armExtend);
-
-            motorRotator.setPower(right_trigger/2-left_trigger/2);
-            motorLift.setPower(liftUp);
-            motorLift.setPower(-liftDown);
-            if(collector){
-                motorCollector.setPower(-0.8);
-            }
-            else{
-                motorCollector.setPower(0);
-            }
-            if(reverse){
-                motorCollector.setPower(0.8);
-            }
-            else{
-                motorCollector.setPower(0);
-            }
+//
+//            motorExtenderRight.setPower(-extend);
+//            motorExtenderLeft.setPower(extend);
+//            if(motorExtenderRight.getCurrentPosition() > motorExtenderLeft.getCurrentPosition()){
+//                motorExtenderRight.setPower((-extend)* (motorExtenderLeft.getCurrentPosition()/motorExtenderRight.getCurrentPosition()));
+//            }
+//            else if(motorExtenderRight.getCurrentPosition() < motorExtenderLeft.getCurrentPosition()){
+//                motorExtenderLeft.setPower((extend)* (motorExtenderRight.getCurrentPosition()/motorExtenderLeft.getCurrentPosition()));
+//            }
+//            motorDeposit.setPower(armExtend);
+//
+//            motorRotator.setPower(right_trigger/2-left_trigger/2);
+//            motorLift.setPower(liftUp);
+//            motorLift.setPower(-liftDown);
+//            if(collector){
+//                motorCollector.setPower(-0.8);
+//            }
+//            else{
+//                motorCollector.setPower(0);
+//            }
+//            if(reverse){
+//                motorCollector.setPower(0.8);
+//            }
+//            else{
+//                motorCollector.setPower(0);
+//            }
             telemetry.addData("Left_trigger", this.gamepad2.left_trigger);
             telemetry.addData("Right_trigger", this.gamepad2.right_trigger);
-            telemetry.addData("motorLift", motorLift.getCurrentPosition());
-            telemetry.addData("motorExtenderLeft", motorExtenderLeft.getCurrentPosition());
-            telemetry.addData("motorExtenderRight", motorExtenderRight.getCurrentPosition());
-            telemetry.addData("motorDeposit", motorDeposit.getCurrentPosition());
+//            telemetry.addData("motorLift", motorLift.getCurrentPosition());
+//            telemetry.addData("motorExtenderLeft", motorExtenderLeft.getCurrentPosition());
+//            telemetry.addData("motorExtenderRight", motorExtenderRight.getCurrentPosition());
+//            telemetry.addData("motorDeposit", motorDeposit.getCurrentPosition());
             telemetry.update();
         }
     }
