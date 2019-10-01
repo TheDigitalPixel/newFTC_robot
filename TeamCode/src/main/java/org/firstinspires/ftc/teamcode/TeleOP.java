@@ -1,11 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ServoController;
+import com.qualcomm.*;
 
 @TeleOp
 public class TeleOP extends LinearOpMode{
@@ -53,7 +48,11 @@ public class TeleOP extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
+<<<<<<< HEAD
         TeleOp dicko = new TeleOp();
+=======
+        public TeleOp dicko();
+>>>>>>> parent of 14bf31d... Update TeleOP.java
         dicko.drive();
 
 
@@ -79,11 +78,11 @@ public class TeleOP extends LinearOpMode{
 
             telemetry.addData("Left_trigger", this.gamepad2.left_trigger);
             telemetry.addData("Right_trigger", this.gamepad2.right_trigger);
-//            telemetry.addData("motorLift", motorLift.getCurrentPosition());
-//            telemetry.addData("motorExtenderLeft", motorExtenderLeft.getCurrentPosition());
-//            telemetry.addData("motorExtenderRight", motorExtenderRight.getCurrentPosition());
-//            telemetry.addData("motorDeposit", motorDeposit.getCurrentPosition());
-//            telemetry.update();
+            telemetry.addData("motorLift", motorLift.getCurrentPosition());
+            telemetry.addData("motorExtenderLeft", motorExtenderLeft.getCurrentPosition());
+            telemetry.addData("motorExtenderRight", motorExtenderRight.getCurrentPosition());
+            telemetry.addData("motorDeposit", motorDeposit.getCurrentPosition());
+            telemetry.update();
         }
     }
     public void forward(){
