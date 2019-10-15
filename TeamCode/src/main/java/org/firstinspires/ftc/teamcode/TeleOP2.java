@@ -48,6 +48,7 @@ public class TeleOP2 extends LinearOpMode{
             final double v3 = -r * Math.sin(robotAngle) - rightX;
             final double v4 = r * Math.cos(robotAngle) - rightX;
 
+
             motorWheelBL.setPower(v1);
             motorWheelBR.setPower(v2);
             motorWheelFL.setPower(v3);
