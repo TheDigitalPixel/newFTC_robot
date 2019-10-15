@@ -87,15 +87,15 @@ public class TeleOP extends LinearOpMode{
             double WheelFL= motorWheelFL.getPower();
             double WheelFR= motorWheelFR.getPower();
 
-            double V2= (v2*v2)/WheelBL;
-            double V1= (v1*v1)/WheelBR;
-            double V4= (v4*v4)/WheelFL;
-            double V3= (v3*v3)/WheelFR;
-            
-            motorWheelBL.setPower(V2);
-            motorWheelBR.setPower(V1);
-            motorWheelFL.setPower(V4);
-            motorWheelFR.setPower(V3);
+            double V2= (v2*v2)/WheelBR;
+            double V1= (v1*v1)/WheelBL;
+            double V4= (v4*v4)/WheelFR;
+            double V3= (v3*v3)/WheelFL;
+
+            motorWheelBL.setPower(V1);
+            motorWheelBR.setPower(V2);
+            motorWheelFL.setPower(V3);
+            motorWheelFR.setPower(V4);
 
             telemetry.addData("FL Motor Power", motorWheelFL.getPower());
             telemetry.addData("FR Motor Power", motorWheelFR.getPower());
