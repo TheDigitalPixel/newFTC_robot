@@ -92,6 +92,11 @@ public class TeleOP extends LinearOpMode{
             double V4= (v4*v4)/WheelFR;
             double V3= (v3*v3)/WheelFL;
 
+            double scale = Math.max(Math.max(V1,V2),Math.max(V3,V4));
+            V1=V1/scale;
+            V2=V2/scale;
+            V3=V3/scale;
+            V4=V4/scale;
             motorWheelBL.setPower(V1);
             motorWheelBR.setPower(V2);
             motorWheelFL.setPower(V3);
