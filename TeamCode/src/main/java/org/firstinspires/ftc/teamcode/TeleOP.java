@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
+import static java.lang.System.nanoTime;
 
 @TeleOp
 public class TeleOP extends LinearOpMode{
@@ -82,21 +83,28 @@ public class TeleOP extends LinearOpMode{
             final double v3 = -r * Math.sin(robotAngle) - rightX;
             final double v4 = r * Math.cos(robotAngle) - rightX;
 
+            double c1=v1*0.9;
+            double c2=v2*0.9;
+            double c3=v3*0.9;
+            double c4=v4*0.9;
+
             double WheelBL= motorWheelBL.getPower();
             double WheelBR= motorWheelBR.getPower();
             double WheelFL= motorWheelFL.getPower();
             double WheelFR= motorWheelFR.getPower();
 
-            double V2= (v2*v2)/WheelBR;
-            double V1= (v1*v1)/WheelBL;
-            double V4= (v4*v4)/WheelFR;
-            double V3= (v3*v3)/WheelFL;
+            double errorBL= c1-WheelBL;
+            double errorBR= c2-WheelBR;
+            double errorFL= c3-WheelFL;
+            double errorFR= c4-WheelFR;
 
-            double scale = Math.max(Math.max(V1,V2),Math.max(V3,V4));
-            V1=(V1/scale)-0.1;
-            V2=(V2/scale)-0.1;
-            V3=(V3/scale)-0.1;
-            V4=(V4/scale)-0.1;
+            double KP= 0.8;
+
+            double V1= WheelBL + KP*errorBL;
+            double V2= WheelBR + KP*errorBR;
+            double V3= WheelFL + KP*errorFL;
+            double V4= WheelFR + KP*errorFR;
+
             motorWheelBL.setPower(V1);
             motorWheelBR.setPower(V2);
             motorWheelFL.setPower(V3);
